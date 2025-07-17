@@ -32,6 +32,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	//runtimeOnly("com.h2database:h2")
 	//runtimeOnly("org.springframework.boot:spring-boot-devtools")
+
+
+	implementation("com.openai:openai-java:2.12.4")
+	implementation("com.google.genai:google-genai:1.8.0")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
