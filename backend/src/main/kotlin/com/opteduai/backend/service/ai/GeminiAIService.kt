@@ -61,7 +61,7 @@ class GeminiAIService : AIService {
         numItems: Int,
         language: String
     ): AIResponse<AIQuiz> {
-        val client = Client.builder().apiKey("AIzaSyB3rweoElcrXVGNoERRD-2JyKiIJgWyyhs").build()
+        val client = Client.builder().apiKey(apiKey).build()
 
         val prompt = String.format("Generate a quiz in JSON format, containing %d questions, each containing %d items. The topic of the quiz should be '%s', the knowledge level '%s'. Language of the quiz must be '%s'. Response must be immediate json object without any prefixes.",
                 numQuestions, numItems, topic, level, language)
