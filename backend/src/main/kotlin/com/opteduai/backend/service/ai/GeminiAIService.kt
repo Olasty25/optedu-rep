@@ -7,17 +7,22 @@ import com.google.genai.types.ListModelsConfig
 import com.google.gson.Gson
 import com.google.gson.JsonDeserializer
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
 
-@Configuration
+@Component
 class GeminiAIService : AIService {
+
+    @Value("\${app.gemini.apiKey}")
+    private lateinit var apiKey: String
 
 
     override fun executePrompt(prompt: String): AIResponse<String?> {
         try {
-            val client = Client.builder().apiKey("AIzaSyB3rweoElcrXVGNoERRD-2JyKiIJgWyyhs").build()
+            val client = Client.builder().apiKey(apiKey).build()
 
             val response = client.models.generateContent("gemini-2.0-flash-001",
                 prompt, null)
