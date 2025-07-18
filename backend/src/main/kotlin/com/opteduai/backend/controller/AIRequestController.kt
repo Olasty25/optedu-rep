@@ -1,5 +1,6 @@
 package com.opteduai.backend.controller
 
+import com.opteduai.backend.service.ai.AIQuiz
 import com.opteduai.backend.service.ai.AIResponse
 import com.opteduai.backend.service.ai.AIService
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,11 +17,19 @@ class  AIRequestController {
 
 
 
-    @PostMapping("/api/hello")
-    fun sendPrompt(prompt: String): AIResponse {
+    @PostMapping("/api/prompt")
+    fun sendPrompt(prompt: String): AIResponse<String?> {
         // zaytac AI z tym promptem, poczekać na odpowiedż, przetworzyć ją i zwrócić do user
 
         //val responseFromAI = AI.sendPrompt(prompt);
         return aiService.executePrompt(prompt)
+    }
+
+
+    @PostMapping("/api/quiz")
+    fun generateQuiz(topic: String, level: String, numQuestions: Int, numItems: Int, language: String): AIResponse<AIQuiz> {
+
+        //val responseFromAI = AI.sendPrompt(prompt);
+        return aiService.generateQuiz(topic, level, numQuestions, numItems, language)
     }
 }

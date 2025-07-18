@@ -1,5 +1,10 @@
 package com.opteduai.backend.service.ai
-data class AIResponse(val success: Boolean, val response: String)
+data class AIResponse<T>(val success: Boolean, val response: T?)
+
+data class AIQuiz(val questions: List<String>, val topic: String, val level: String)
+
 interface AIService {
-    fun executePrompt(prompt: String): AIResponse
+    fun executePrompt(prompt: String): AIResponse<String?>
+
+    fun generateQuiz(topic: String, level: String, numQuestions: Int, numItems: Int, language: String): AIResponse<AIQuiz>
 }
