@@ -17,7 +17,7 @@ class QuizScreen extends StatelessWidget {
         QuizOption(text: 'Madrid', isCorrect: false),
         QuizOption(text: 'Paris', isCorrect: true),
         QuizOption(text: 'Rome', isCorrect: false),
-      ],
+      ], id: '1',
     ),
     QuizQuestion(
       questionText: 'Which planet is known as the Red Planet?',
@@ -26,7 +26,7 @@ class QuizScreen extends StatelessWidget {
         QuizOption(text: 'Mars', isCorrect: true),
         QuizOption(text: 'Jupiter', isCorrect: false),
         QuizOption(text: 'Saturn', isCorrect: false),
-      ],
+      ], id: '2',
     ),
     QuizQuestion(
       questionText: 'What is the largest ocean on Earth?',
@@ -35,7 +35,7 @@ class QuizScreen extends StatelessWidget {
         QuizOption(text: 'Indian Ocean', isCorrect: false),
         QuizOption(text: 'Arctic Ocean', isCorrect: false),
         QuizOption(text: 'Pacific Ocean', isCorrect: true),
-      ],
+      ], id: '3',
     ),
   ];
 
@@ -46,7 +46,7 @@ class QuizScreen extends StatelessWidget {
     // A better approach for real apps is to fetch or manage this state with a state management solution.
     List<QuizQuestion> quizQuestions = sampleQuestions.map((q) => QuizQuestion(
       questionText: q.questionText,
-      options: q.options.map((o) => QuizOption(text: o.text, isCorrect: o.isCorrect)).toList(),
+      options: q.options.map((o) => QuizOption(text: o.text, isCorrect: o.isCorrect)).toList(), id: '1',
     )).toList();
 
 
