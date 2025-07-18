@@ -1,7 +1,11 @@
 package com.opteduai.backend.service.ai
 
+import com.google.api.client.json.Json
+import com.google.api.client.json.JsonParser
 import com.google.genai.Client
 import com.google.genai.types.ListModelsConfig
+import com.google.gson.Gson
+import com.google.gson.JsonDeserializer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -54,13 +58,16 @@ class GeminiAIService : AIService {
     ): AIResponse<AIQuiz> {
         val client = Client.builder().apiKey("AIzaSyB3rweoElcrXVGNoERRD-2JyKiIJgWyyhs").build()
 
-        val prompt = String.format("Generate a quiz in JSON format, containing %d questions, each containing %d items. The topic of the quiz should be '%s', the knowledge level '%s'. Language of the quiz must be '%s'",
+        val prompt = String.format("Generate a quiz in JSON format, containing %d questions, each containing %d items. The topic of the quiz should be '%s', the knowledge level '%s'. Language of the quiz must be '%s'. Response must be immediate json object without any prefixes.",
                 numQuestions, numItems, topic, level, language)
         val response = client.models.generateContent("gemini-2.0-flash-001",
             prompt, null)
 
-        println("Unary response: " + response.text())
-        return AIResponse(true, null);
+        val responseText = response.text()
+        val gson = Gson()
+        val json = gson.toJsonTree(responseText)
+        println("Unary response: $responseText")
+        return AIResponse(true, AIQuiz(emptyList(), topic, level, responseText))
 
     }
 
