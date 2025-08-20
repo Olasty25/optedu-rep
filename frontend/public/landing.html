@@ -96,6 +96,7 @@
     .features {
       text-align: center;
       padding: 50px 20px;
+      border-bottom: 1px solid #ddd;
     }
 
     .logos {
@@ -116,6 +117,37 @@
       font-size: 12px;
       color: #555;
       background: #fafafa;
+    }
+
+    /* --- Innovation Section --- */
+    .innovation {
+      padding: 60px 20px;
+      background: #fafafa;
+    }
+
+    .innovation h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 24px;
+    }
+
+    .innovation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .innovation-item h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .innovation-item p {
+      font-size: 14px;
+      color: #555;
     }
 
     /* --- Footer --- */
@@ -180,6 +212,25 @@
       <div class="logo-box">Logo 2</div>
       <div class="logo-box">Logo 3</div>
       <div class="logo-box">Logo 4</div>
+    </div>
+  </div>
+
+  <!-- Innovation Section -->
+  <div class="innovation">
+    <h2>Why Optedu AI is Innovative</h2>
+    <div class="innovation-grid">
+      <div class="innovation-item">
+        <h3>Adaptive Learning</h3>
+        <p>Optedu AI adjusts dynamically to each student’s pace and level, ensuring truly personalized education.</p>
+      </div>
+      <div class="innovation-item">
+        <h3>Smart Integration</h3>
+        <p>It merges diverse sources — books, notes, and digital content — into clear, structured study flows.</p>
+      </div>
+      <div class="innovation-item">
+        <h3>Motivation Engine</h3>
+        <p>Stay engaged with reminders, real-time feedback, and progress tracking to keep your learning on course.</p>
+      </div>
     </div>
   </div>
 
