@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #111;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid #111;
+      background: #fff;
+    }
+
+    .btn:hover {
+      background: #f2f2f2;
+    }
+
+    .btn.primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: #333;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h2 {
+      margin: 20px 0;
+      font-size: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .pager-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .pager-buttons button {
+      padding: 10px 18px;
+      border: 1px solid #111;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .pager-buttons .primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .pager-buttons .primary:hover {
+      background: #333;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+      font-size: 14px;
+    }
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Generate Your Plan</h1>
+  </header>
+
+  <div class="container">
+    <!-- Start screen -->
+    <div id="startScreen">
+      <button class="btn" onclick="showSection('sources')">Use your own sources</button>
+      <button class="btn primary" onclick="showSection('structure')">Define plan structure</button>
+    </div>
+
+    <!-- Use Your Own Sources -->
+    <div id="sources" class="hidden">
+      <h2>Use Your Own Sources</h2>
+      <input type="text" placeholder="Paste a URL">
+      <label>Or upload files:</label>
+      <input type="file" multiple>
+      <button class="btn primary" onclick="backToStart()">Back</button>
+    </div>
+
+    <!-- Define Plan Structure (pager) -->
+    <div id="structure" class="hidden">
+      <form id="pagerForm">
+        <!-- Page 1 -->
+        <div class="form-step active">
+          <label>Title</label>
+          <input type="text" placeholder="e.g. French revolution">
+          <label>Description</label>
+          <input type="text" placeholder="e.g. 3rd chapter, only key info">
+        </div>
+        <!-- Page 2 -->
+        <div class="form-step hidden">
+          <label>What do you want to achieve?</label>
+          <input type="text" placeholder="e.g. Be prepared for exam">
+          <label>How much time you got?</label>
+          <input type="text" placeholder="e.g. 6 days">
+          <label>How much time can you study daily?</label>
+          <input type="text" placeholder="e.g. 20 mins">
+        </div>
+        <!-- Page 3 -->
+        <div class="form-step hidden">
+          <label>Would you like AI reminders?</label>
+          <div class="options">
+            <label><input type="radio" name="reminders"> Yes</label>
+            <label><input type="radio" name="reminders"> No</label>
+          </div>
+          <label>How confident do you feel about this topic right now?</label>
+          <div class="options">
+            <label><input type="radio" name="confidence"> Know nothing</label>
+            <label><input type="radio" name="confidence"> Basics</label>
+            <label><input type="radio" name="confidence"> Need review</label>
+            <label><input type="radio" name="confidence"> Not sure</label>
+          </div>
+        </div>
+
+        <!-- Pager buttons -->
+        <div class="pager-buttons">
+          <button type="button" id="prevBtn">Previous</button>
+          <button type="button" id="nextBtn" class="primary">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 by ThoReSt | Privacy Policy
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.getElementById("startScreen").classList.add("hidden");
+      document.getElementById("sources").classList.add("hidden");
+      document.getElementById("structure").classList.add("hidden");
+      document.getElementById(id).classList.remove("hidden");
+    }
+    function backToStart() {
+      document.getElementById("sources").classList.add("hidden");
+      document.getElementById("structure").classList.add("hidden");
+      document.getElementById("startScreen").classList.remove("hidden");
+    }
+
+    const steps = document.querySelectorAll(".form-step");
+    let currentStep = 0;
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function showStep(index) {
+      steps.forEach((s, i) => {
+        s.classList.toggle("hidden", i !== index);
+      });
+      prevBtn.style.display = index === 0 ? "none" : "inline-block";
+      nextBtn.textContent = index === steps.length - 1 ? "Save" : "Next";
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) { currentStep--; showStep(currentStep); }
+    });
+    nextBtn.addEventListener("click", () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++; showStep(currentStep);
+      } else {
+        alert("Plan saved!");
+        backToStart();
+      }
+    });
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
