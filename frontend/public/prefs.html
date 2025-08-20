@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preferences Pager</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .form-box {
+      max-width: 600px;
+      width: 100%;
+      border: 1px solid #ccc;
+      padding: 30px;
+      background: #fff;
+    }
+
+    .image-placeholder {
+      width: 100px;
+      height: 100px;
+      border: 1px dashed #aaa;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: #555;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin: 10px 0 5px;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+
+    .options {
+      margin-bottom: 15px;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .pager-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .pager-buttons button {
+      padding: 10px 18px;
+      border: 1px solid #111;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .pager-buttons button.primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .pager-buttons button.primary:hover {
+      background: #333;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <div class="image-placeholder">[ Image Placeholder ]</div>
+      <h1>Preferences</h1>
+
+      <form id="pagerForm">
+        <!-- Step 1 -->
+        <div class="form-step active">
+          <label>How old are you?</label>
+          <input type="number" placeholder="e.g. 19">
+
+          <label>What are you good in?</label>
+          <input type="text" placeholder="e.g. Biology, Engineering">
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step">
+          <label>What level of education are you?</label>
+          <div class="options">
+            <label><input type="checkbox"> Primary School</label>
+            <label><input type="checkbox"> Secondary School</label>
+            <label><input type="checkbox"> High School</label>
+            <label><input type="checkbox"> Studies</label>
+            <label><input type="checkbox"> I'm working</label>
+          </div>
+
+          <label>What learning outcomes do you expect?</label>
+          <div class="options">
+            <label><input type="checkbox"> Be prepared for tests</label>
+            <label><input type="checkbox"> Utilize this knowledge</label>
+            <label><input type="checkbox"> Change my job</label>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step">
+          <label>How do you prefer to learn?</label>
+          <div class="options">
+            <label><input type="checkbox"> Short lessons</label>
+            <label><input type="checkbox"> Step-by-step guides</label>
+            <label><input type="checkbox"> Visual explanations</label>
+            <label><input type="checkbox"> Reading detailed notes</label>
+          </div>
+
+          <label>What obstacles can stop you?</label>
+          <div class="options">
+            <label><input type="checkbox"> Little time</label>
+            <label><input type="checkbox"> Lack of direction</label>
+            <label><input type="checkbox"> Difficulty focusing</label>
+            <label><input type="checkbox"> Hard to understand topics</label>
+          </div>
+        </div>
+
+        <!-- Pager buttons -->
+        <div class="pager-buttons">
+          <button type="button" id="prevBtn">Previous</button>
+          <button type="button" id="nextBtn" class="primary">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 by ThoReSt | Privacy Policy
+  </footer>
+
+  <script>
+    const steps = document.querySelectorAll(".form-step");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    let currentStep = 0;
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+      prevBtn.style.display = index === 0 ? "none" : "inline-block";
+      nextBtn.textContent = index === steps.length - 1 ? "Save" : "Next";
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        document.getElementById("pagerForm").submit();
+      }
+    });
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
