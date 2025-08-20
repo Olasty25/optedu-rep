@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 40px 20px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 14px;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 30px auto 0;
+      border-bottom: 1px solid #ccc;
+      max-width: 800px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 12px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      background: #f9f9f9;
+    }
+
+    .tab.active {
+      background: #fff;
+      font-weight: bold;
+    }
+
+    /* Content box */
+    .content-box {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      text-align: left;
+      background: #fff;
+    }
+
+    /* Placeholder na obraz */
+    .image-placeholder {
+      width: 100%;
+      height: 150px;
+      border: 1px solid #999;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    /* Bottom bar */
+    .bottom-bar {
+      max-width: 800px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+    }
+
+    .bottom-bar input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .bottom-bar button {
+      padding: 8px 16px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .bottom-bar button:hover {
+      background: #333;
+    }
+
+    /* Finish btn */
+    .finish-btn {
+      margin: 30px auto;
+      padding: 12px 24px;
+      border: none;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .finish-btn:hover {
+      background: #333;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 20px;
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Module Title</h1>
+    <p>Module goals. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+       Aenean commodo ligula eget dolor.</p>
+  </header>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active">Self-study mode</div>
+    <div class="tab">Guided by AI Mode</div>
+    <div class="tab">Review mode</div>
+  </div>
+
+  <!-- Content -->
+  <div class="content-box">
+    <div class="image-placeholder">[ Image Placeholder ]</div>
+    <h3>Historical Context</h3>
+    <p>Tutor: Let's talk about the causes of the French Revolution. One major cause was social inequality.</p>
+    <ul>
+      <li>French society was divided into three estates.</li>
+      <li>The Third Estate had to pay most taxes.</li>
+    </ul>
+    <p>Tutor: Enlightenment ideas also played a key role.</p>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <input type="text" placeholder="Ask Tutor a Question">
+    <button>Send</button>
+    <button>Tools</button>
+  </div>
+
+  <!-- Finish -->
+  <button class="finish-btn">Finish</button>
+
+  <footer>
+    © 2026 by ThoReSt | Privacy Policy
+  </footer>
+
+</body>
+</html>
