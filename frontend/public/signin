@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .signin-box {
+      border: 1px solid #ccc;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .image-placeholder {
+      width: 100px;
+      height: 100px;
+      border: 1px dashed #aaa;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: #555;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .social-buttons button {
+      flex: 1;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #111;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .social-buttons button:hover {
+      background: #f2f2f2;
+    }
+
+    .divider {
+      margin: 15px 0;
+      font-size: 12px;
+      color: #999;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      margin-top: 15px;
+    }
+
+    .footer-text a {
+      color: #111;
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="signin-box">
+      <div class="image-placeholder">[ Image Placeholder ]</div>
+
+      <h1>Sign In</h1>
+
+      <div class="social-buttons">
+        <button>Facebook</button>
+        <button>Google</button>
+      </div>
+
+      <div class="divider">Or</div>
+
+      <form>
+        <input type="email" placeholder="Email/Phone Number">
+        <input type="password" placeholder="Password">
+        <button type="submit" class="btn-primary">Enter</button>
+      </form>
+
+      <p class="footer-text">
+        Forgot password? <a href="#">Reset Password</a>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 by ThoReSt</p>
+    <p><a href="#">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
