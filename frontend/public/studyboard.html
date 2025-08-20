@@ -37,12 +37,13 @@
       justify-content: center;
       margin: 30px auto 0;
       border-bottom: 1px solid #ccc;
-      max-width: 800px;
+      
+      max-width: 500px;
     }
 
     .tab {
       flex: 1;
-      padding: 12px;
+      padding: 8px;
       cursor: pointer;
       border: 1px solid #ccc;
       border-bottom: none;
@@ -64,18 +65,32 @@
       background: #fff;
     }
 
-    /* Placeholder na obraz */
-    .image-placeholder {
-      width: 100%;
-      height: 150px;
+    /* === Tiles (instead of image placeholder) === */
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tile {
       border: 1px solid #999;
       background: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .tile h4 {
+      font-size: 16px;
+      margin-bottom: 2px;
+      font-weight: bold;
+    }
+
+    .tile p {
+      font-size: 13px;
+      margin: 4px 0;
+      font-weight: normal;
       color: #555;
-      font-size: 14px;
-      margin-bottom: 15px;
     }
 
     /* Bottom bar */
@@ -148,14 +163,32 @@
 
   <!-- Content -->
   <div class="content-box">
-    <div class="image-placeholder">[ Image Placeholder ]</div>
+    <!-- 🔥 Tiles here -->
+    <div class="tiles">
+      <div class="tile">
+        <h4>Historical Context</h4>
+        <p>Flashcards</p>
+
+      </div>
+      <div class="tile">
+        <h4>Causes</h4>
+        <p>Short Test</p>
+      </div>
+      <div class="tile">
+        <h4>Dates</h4>
+
+        <p>Notes</p>
+      </div>
+    </div>
+
     <h3>Historical Context</h3>
     <p>Tutor: Let's talk about the causes of the French Revolution. One major cause was social inequality.</p>
     <ul>
       <li>French society was divided into three estates.</li>
       <li>The Third Estate had to pay most taxes.</li>
     </ul>
-    <p>Tutor: Enlightenment ideas also played a key role.</p>
+    <p>You: <i>Demanded to Simplify</i>.</p>
+    <p>Tutor: Ok, easier: BAck in the days....</p>
   </div>
 
   <!-- Bottom bar -->
