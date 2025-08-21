@@ -5,16 +5,18 @@ async function sendMessage() {
 
   const messagesDiv = document.getElementById("messages");
 
+  // Dodaj wiadomość usera
   const userMsg = document.createElement("div");
   userMsg.className = "message user";
-  userMsg.innerText = text;
+  userMsg.textContent = text;
   messagesDiv.appendChild(userMsg);
 
   input.value = "";
 
+  // Placeholder dla bota
   const botMsg = document.createElement("div");
   botMsg.className = "message bot";
-  botMsg.innerText = "Thinking...";
+  botMsg.textContent = "Thinking...";
   messagesDiv.appendChild(botMsg);
 
   try {
@@ -25,13 +27,14 @@ async function sendMessage() {
     });
 
     const data = await res.json();
-    if (data.choices) {
-      botMsg.innerText = data.choices[0].message.content;
+
+    if (data.choices?.[0]?.message?.content) {
+      botMsg.textContent = data.choices[0].message.content;
     } else {
-      botMsg.innerText = "AI Error 🙁";
+      botMsg.textContent = "⚠️ Error: AI did not respond";
     }
   } catch (err) {
-    botMsg.innerText = "Server Error";
+    botMsg.textContent = "⚠️ Server error";
     console.error(err);
   }
 
